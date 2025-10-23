@@ -60,4 +60,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp.logging)
+
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
+    implementation(libs.glide.annotations)
 }

@@ -19,6 +19,12 @@ public class JokeResponse {
         private String value;
         private String icon_url;
 
+        public JokeDto(String id, String value, String icon_url) {
+            this.id = id;
+            this.value = value;
+            this.icon_url = icon_url;
+        }
+
         public String getId() {
             return id;
         }

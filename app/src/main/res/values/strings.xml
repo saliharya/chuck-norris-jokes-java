@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ChuckNorrisJokesApp</string>
+    <string name="search_jokes">Search jokes…</string>
+    <string name="search">Search…</string>
+    <string name="joke_icon">Joke Icon</string>
 </resources>
