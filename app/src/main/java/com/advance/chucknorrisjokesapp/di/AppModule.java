@@ -11,19 +11,36 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
+import okhttp3.CertificatePinner;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 @InstallIn(SingletonComponent.class)
 public class AppModule {
+
     @Provides
     @Singleton
-    public ChuckNorrisApi provideChuckNorrisApi() {
+    public OkHttpClient provideOkHttpClient() {
+        CertificatePinner certificatePinner = new CertificatePinner.Builder()
+                .add("api.chucknorris.io", BuildConfig.SSL_PIN)
+                .build();
+
+        return new OkHttpClient.Builder()
+                .certificatePinner(certificatePinner)
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    public ChuckNorrisApi provideChuckNorrisApi(OkHttpClient client) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         return retrofit.create(ChuckNorrisApi.class);
     }
 

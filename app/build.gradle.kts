@@ -19,7 +19,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val baseUrl: String = project.findProperty("BASE_URL") as String
+        val sslPin: String = project.findProperty("SSL_PIN") as String
         buildConfigField("String", "BASE_URL", "\"$baseUrl\"")
+        buildConfigField("String", "SSL_PIN", "\"$sslPin\"")
     }
 
     buildTypes {
