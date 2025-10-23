@@ -116,5 +116,6 @@ public class MainActivity extends AppCompatActivity {
         jokeAdapter = new JokeListAdapter(this);
         binding.rvSearchResult.setLayoutManager(new LinearLayoutManager(this));
         binding.rvSearchResult.setAdapter(jokeAdapter);
+        binding.rvSearchResult.setHasFixedSize(true);
     }
 }

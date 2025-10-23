@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.advance.chucknorrisjokesapp.R;
@@ -31,9 +32,13 @@ public class JokeListAdapter extends RecyclerView.Adapter<JokeListAdapter.JokeVi
     public void setData(List<Joke> jokes) {
         if (jokes == null) return;
 
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(
+                new JokeDiffCallback(this.jokeList, jokes)
+        );
+
         jokeList.clear();
         jokeList.addAll(jokes);
-        notifyDataSetChanged();
+        diffResult.dispatchUpdatesTo(this);
     }
 
     @NonNull
