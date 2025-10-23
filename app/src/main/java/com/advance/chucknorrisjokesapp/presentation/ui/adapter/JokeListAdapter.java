@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.advance.chucknorrisjokesapp.R;
-import com.advance.chucknorrisjokesapp.data.model.JokeResponse;
+import com.advance.chucknorrisjokesapp.domain.model.Joke;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -22,13 +22,13 @@ import java.util.List;
 public class JokeListAdapter extends RecyclerView.Adapter<JokeListAdapter.JokeViewHolder> {
 
     private final Context context;
-    private final List<JokeResponse.JokeDto> jokeList = new ArrayList<>();
+    private final List<Joke> jokeList = new ArrayList<>();
 
     public JokeListAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<JokeResponse.JokeDto> jokes) {
+    public void setData(List<Joke> jokes) {
         if (jokes == null) return;
 
         jokeList.clear();
@@ -45,7 +45,7 @@ public class JokeListAdapter extends RecyclerView.Adapter<JokeListAdapter.JokeVi
 
     @Override
     public void onBindViewHolder(@NonNull JokeListAdapter.JokeViewHolder holder, int position) {
-        JokeResponse.JokeDto joke = jokeList.get(position);
+        Joke joke = jokeList.get(position);
 
         holder.tvJoke.setText(joke.getValue());
 
