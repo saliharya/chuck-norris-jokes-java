@@ -1,4 +1,4 @@
-package com.advance.chucknorrisjokesapp;
+package com.advance.chucknorrisjokesapp.presentation.ui;
 
 import android.os.Bundle;
 
@@ -10,6 +10,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.advance.chucknorrisjokesapp.databinding.ActivityMainBinding;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
