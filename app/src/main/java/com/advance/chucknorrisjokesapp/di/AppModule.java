@@ -1,7 +1,11 @@
 package com.advance.chucknorrisjokesapp.di;
 
 import com.advance.chucknorrisjokesapp.data.remote.ChuckNorrisApi;
+import com.advance.chucknorrisjokesapp.data.repository.JokeRepositoryImpl;
+import com.advance.chucknorrisjokesapp.domain.repository.JokeRepository;
+
 import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
@@ -22,4 +26,9 @@ public class AppModule {
         return retrofit.create(ChuckNorrisApi.class);
     }
 
+    @Provides
+    @Singleton
+    public JokeRepository provideJokeRepository(ChuckNorrisApi api) {
+        return new JokeRepositoryImpl(api);
+    }
 }
