@@ -1,5 +1,6 @@
 package com.advance.chucknorrisjokesapp.di;
 
+import com.advance.chucknorrisjokesapp.BuildConfig;
 import com.advance.chucknorrisjokesapp.data.remote.ChuckNorrisApi;
 import com.advance.chucknorrisjokesapp.data.repository.JokeRepositoryImpl;
 import com.advance.chucknorrisjokesapp.domain.repository.JokeRepository;
@@ -20,7 +21,7 @@ public class AppModule {
     @Singleton
     public ChuckNorrisApi provideChuckNorrisApi() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.chucknorris.io/")
+                .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(ChuckNorrisApi.class);
